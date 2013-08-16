@@ -49,7 +49,6 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'sqlite:'.APPPATH.'db/app.sqlite';
-echo $db['default']['hostname'] . '<br/>';
 $db['default']['username'] = '';
 $db['default']['password'] = '';
 $db['default']['database'] = '';

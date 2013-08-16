@@ -26,31 +26,41 @@
 
 			//判斷pushList是否送出，並insert到資料表。
 			if($this->form_validation->run()){
-				$this->list_model->set_list();
+				$result = $this->list_model->set_list();
+				//var_dump($result);
 			}
 
 			//讀取list資料
 			$data['list'] = $this->list_model->get_list();
+
+			//var_dump($data['list']);
 
 			//載入CSS
 			$this->load->helper('url');
 			$data['customCSS_path'] = base_url('public/css/custom.css');
 			$data['bootstrap_path'] = base_url('public/css/bootstrap.css');
 
-			//載入版面
-			$this->load->view('templates/header', $data);
+			//載入版面 
+			//T: Footer header弄到VIEW裡面我覺得比較彈性。參考看看
+			//$this->load->view('templates/header', $data);
 			$this->load->view('mylist', $data);
 		}
 
 		public function delete(){
 			/*
 				G:有什麼方法可以進delete後又跳回index？
+
+				T:可以用CIE給的redirect				
+				http://ellislab.com/codeigniter/user-guide/helpers/url_helper.html
 			*/
 		
 			$LID = $this->input->post('delete');
 
 			if($LID){
 				$this->list_model->delete_list($LID);
+				echo 'ok';
+			}else{
+				echo 'ko';
 			}
 		}
 	}

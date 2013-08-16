@@ -1,3 +1,4 @@
+<?php $this->load->view('templates/header');	?>
 	<body>
 		<div class="navbar">
 			<div class="navbar-inner">
@@ -38,6 +39,7 @@
 			</table>
 		</div>
 		<script src="http://code.jquery.com/jquery.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+		<!-- 一直跳出來錯誤好煩(YAY) -->
+		<!--<script src="js/bootstrap.min.js"></script>-->
 	</body>
 </html>
