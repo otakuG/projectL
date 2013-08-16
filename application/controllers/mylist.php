@@ -43,7 +43,10 @@
 		}
 
 		public function delete(){
-			//判斷delete
+			/*
+				G:有什麼方法可以進delete後又跳回index？
+			*/
+		
 			$LID = $this->input->post('delete');
 
 			if($LID){

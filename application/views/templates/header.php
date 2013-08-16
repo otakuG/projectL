@@ -6,6 +6,7 @@
 		<link href="<?php echo $bootstrap_path; ?>" rel="stylesheet" media="screen" />
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script type="text/javascript">
+		<!--G:這段我執行起來會讓刪除無法作用。-->
 		$(function(){
 			$('.delete_button').click(function(e){
 				e.preventDefault();
