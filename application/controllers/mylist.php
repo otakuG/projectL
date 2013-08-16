@@ -13,14 +13,10 @@
 				我好像得了一個method寫太多東西就會覺得奇怪的病。
 				為什麼判斷delete在表單處理後面，delete就要按兩次才刪得到？
 				2013-08-16
+
+				T:
+				delete應該寫在另一個FUNC
 			*/
-
-			//判斷delete
-			$LID = $this->input->post('delete');
-
-			if($LID){
-				$this->list_model->delete_list($LID);
-			}
 
 			//表單處理
 			$this->load->helper('form');
@@ -44,6 +40,15 @@
 			//載入版面
 			$this->load->view('templates/header', $data);
 			$this->load->view('mylist', $data);
+		}
+
+		public function delete(){
+			//判斷delete
+			$LID = $this->input->post('delete');
+
+			if($LID){
+				$this->list_model->delete_list($LID);
+			}
 		}
 	}
 ?>
