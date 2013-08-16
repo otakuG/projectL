@@ -6,7 +6,15 @@
 		<link href="<?php echo $bootstrap_path; ?>" rel="stylesheet" media="screen" />
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script type="text/javascript">
-		<!--G:這段我執行起來會讓刪除無法作用。-->
+		<!--
+				G:
+				找到JavaScript無法運作的原因。
+				$.post()裡的路徑我必須是：'/~G/projectL/index.php/mylist/delete'
+				因為我的網站不在根目錄下。
+
+				終於看到Tony寫的超酷AJAX效果 QQQQQ
+				話說，JavaScript裡的註解，這樣寫標準嗎？
+		-->
 		$(function(){
 			$('.delete_button').click(function(e){
 				e.preventDefault();
