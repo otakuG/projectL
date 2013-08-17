@@ -18,11 +18,11 @@
 				<h1>敗家清單</h1>
 				<p>物慾無極限，敗家促進經濟！</p>
 			</div>
-			<?php $attributs = array('class' => 'form-inline text-center'); echo form_open('mylist', $attributs); ?>
+			<?php $attributs = array('class' => 'form-inline text-center'); echo form_open('mylist/push', $attributs); ?>
 				<input id="input-push" class="input-xxlarge" name="pushList" type="text" placeholder="PUSH一個清單項目吧！">
 				<button id="push_button" type="submit" class="btn btn-primary">PUSH</button>
 			</form>
-			<table class="table table-hover table-condensed">
+			<table id="list" class="table table-hover table-condensed">
 				<?php foreach($list as $list_item): ?>
 				<tr id="tr_<?php echo $list_item['LID']; ?>">
 					<td><?php echo $list_item['LID']; ?></td>

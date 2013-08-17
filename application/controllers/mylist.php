@@ -2,33 +2,29 @@
 	class MyList extends CI_Controller{
 
 		public function __construct(){
+			//G:我不太懂parent::的用法……
 			parent::__construct();
 			$this->load->model('list_model');
+			$this->load->helper('url');
+			$this->load->helper('form');
 		}
 
 		public function index(){
+			
 			/*
-				G:
-				感覺這index寫得怪怪的……
-				我好像得了一個method寫太多東西就會覺得奇怪的病。
-				為什麼判斷delete在表單處理後面，delete就要按兩次才刪得到？
-				2013-08-16
 
-				T:
-				delete應該寫在另一個FUNC
+				//表單處理
+				$this->load->library('form_validation');
+
+				$this->form_validation->set_rules('pushList', 'pushList', 'required');
+
+				//判斷pushList是否送出，並insert到資料表。
+				if($this->form_validation->run()){
+					$result = $this->list_model->set_list();
+					//var_dump($result);
+				}
+
 			*/
-
-			//表單處理
-			$this->load->helper('form');
-			$this->load->library('form_validation');
-
-			$this->form_validation->set_rules('pushList', 'pushList', 'required');
-
-			//判斷pushList是否送出，並insert到資料表。
-			if($this->form_validation->run()){
-				$result = $this->list_model->set_list();
-				//var_dump($result);
-			}
 
 			//讀取list資料
 			$data['list'] = $this->list_model->get_list();
@@ -36,7 +32,6 @@
 			//var_dump($data['list']);
 
 			//載入CSS
-			$this->load->helper('url');
 			$data['customCSS_path'] = base_url('public/css/custom.css');
 			$data['bootstrap_path'] = base_url('public/css/bootstrap.css');
 
@@ -61,6 +56,23 @@
 				echo 'ok';
 			}else{
 				echo 'ko';
+			}
+		}
+
+		public function push(){
+			/*
+				G:
+				我把push也獨立出一個function。
+				最後註解掉的，是想說把輸出編譯成JSON讓view裡的$.post去讀，不過那整段程式沒辦法RUN。
+			*/
+			$pushList = $this->input->post('pushList');
+
+			if($pushList){
+				$this->list_model->set_list($pushList);
+				redirect('mylist');
+
+				//$data['pushList'] = $this->list_model->update_list();
+				//echo json_encode($data['pushList']);
 			}
 		}
 	}

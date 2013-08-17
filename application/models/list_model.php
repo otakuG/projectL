@@ -10,12 +10,20 @@
 			return $query->result_array();
 		}
 
-		public function set_list(){
+
+		//用來取最新push的清單項目
+		public function update_list(){
+			$this->db->order_by('LID', 'desc');
+			$query = $this->db->get('list', 1);
+			return $query->result_array();
+		}
+
+		public function set_list($pushList){
 			$this->load->helper('date');
 			$datestring = "%Y-%m-%d %h:%i:%s";
 
 			$data = array(
-				'title' => $this->input->post('pushList'),
+				'title' => $pushList,
 				'time' => mdate($datestring, time())
 			);
 
