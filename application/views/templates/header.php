@@ -48,19 +48,39 @@
 			G:
 			這是在網路上找到的做法，可以讓.post去讀PHP回傳的JSON，但整段程式沒辦法RUN。orz
 			要怎麼樣才能用jQuery取值啊？囧
-
+			
 			$('#push_button').click(function(e){
 
 				e.preventDefault();
 
-				var push = $('#pushList').val();
 
+				
+				T: 2013-08-17 21:34:36 
+				HTML <input id="input-push" class="input-xxlarge" type="text" placeholder="PUSH一個清單項目吧！" name="pushList">
+				發現問題了嗎(TROLL)?
+				
+				var push = $('#pushList').val();				
 				$.post(base + 'index.php/mylist/push',{pushList:push},function(data){
 					$('#list').append("<tr>" + "<td>" + data.LID + "</td>" + "<td>" + data.title + "</td>" + "<td>" + data.time + "</td>" + "<tr/>");
 				});
 			});
-
 			*/
+			$('#push_button').click(function(e){
+
+				e.preventDefault();
+				var push = $('#input-push').val();
+				$.post(base + 'index.php/mylist/push',{pushList:push,ajax:true},function(data){
+					$('#list').append("<tr>" + "<td>" + data.LID + "</td>" + "<td>" + data.title + "</td>" + "<td>" + data.time + "</td>" + "<tr/>");
+				},"JSON");
+				/*
+				T: 2013-08-17 21:52:47 
+				似乎要加上type的參數要不然就是PHP的HEADER要改
+				http://api.jquery.com/jQuery.post/
+				再不然就是直接用getJson
+				http://api.jquery.com/jQuery.getJSON/
+				*/
+			});
+
 		});
 		</script>
 	</head>

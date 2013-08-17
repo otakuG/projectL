@@ -4,6 +4,12 @@
 		public function __construct(){
 			//G:我不太懂parent::的用法……
 			parent::__construct();
+
+			/*
+			T：parent是呼叫父類別的建構子，應該是個靜態方法我不太確定
+			所謂的靜態（STATIC）就是這個物件不用實體化(new)就可以使用的變數或方法
+			http://php.net/manual/en/keyword.parent.php
+			*/
 			$this->load->model('list_model');
 			$this->load->helper('url');
 			$this->load->helper('form');
@@ -45,7 +51,7 @@
 			/*
 				G:有什麼方法可以進delete後又跳回index？
 
-				T:可以用CIE給的redirect				
+				T:可以用CI給的redirect				
 				http://ellislab.com/codeigniter/user-guide/helpers/url_helper.html
 			*/
 		
@@ -68,11 +74,33 @@
 			$pushList = $this->input->post('pushList');
 
 			if($pushList){
+				/* T: 2013-08-17 21:28:50 
 				$this->list_model->set_list($pushList);
 				redirect('mylist');
+				*/
 
 				//$data['pushList'] = $this->list_model->update_list();
 				//echo json_encode($data['pushList']);
+
+
+				/*
+					T: 2013-08-17 21:26:40 
+					上面是你原本寫的順序嗎？如果是的話問題很明顯
+					redirect之後就換頁了所以後面的東西都跑不到AJAX也就撈佈道東西
+					如果要REDIRECT又要AJAX就用最簡單的方法POST的時候多塞一個變數ajax=true來實作吧
+				*/
+
+				if($this->list_model->set_list($pushList)){
+					if($this->input->post('ajax')=='true'){
+						$new_item = $this->list_model->update_list();
+						$new_item = $new_item[0];						
+						echo json_encode($new_item);
+					}else{
+						redirect('mylist');
+					}
+				}else{
+					echo 'error';
+				}
 			}
 		}
 	}
