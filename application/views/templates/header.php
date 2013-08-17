@@ -6,26 +6,8 @@
 		<link href="<?php echo $bootstrap_path; ?>" rel="stylesheet" media="screen" />
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script type="text/javascript">
-		/*
-				G:
-				找到JavaScript無法運作的原因。
-				$.post()裡的路徑我必須是：'/~G/projectL/index.php/mylist/delete'
-				因為我的網站不在根目錄下。
-
-				終於看到Tony寫的超酷AJAX效果 QQQQQ
-				話說，JavaScript裡的註解，這樣寫標準嗎？
-		*/
+		
 		$(function(){
-			// T:
-			// 上面的註解是HTML的
-			// JS的註解長這樣			
-			/*
-				也可以這樣，基本上跟PHP差不多			
-
-				但是用#註解會死掉
-
-				加了下面這個應該就可以解決你我目錄不同的問題了
-			*/
 
 			var base = "<?php echo base_url();?>";
 
@@ -59,6 +41,13 @@
 				HTML <input id="input-push" class="input-xxlarge" type="text" placeholder="PUSH一個清單項目吧！" name="pushList">
 				發現問題了嗎(TROLL)?
 				
+				G: 2013-08-18 02:05:27
+				靠wwwww
+				我應該要來訂一個ID命名規則，像這樣"type-name"或是"type_name"？
+				例如：input-push、button-push
+
+				命名這方面，Tony你有什麼想法嗎？
+
 				var push = $('#pushList').val();				
 				$.post(base + 'index.php/mylist/push',{pushList:push},function(data){
 					$('#list').append("<tr>" + "<td>" + data.LID + "</td>" + "<td>" + data.title + "</td>" + "<td>" + data.time + "</td>" + "<tr/>");
@@ -78,6 +67,10 @@
 				http://api.jquery.com/jQuery.post/
 				再不然就是直接用getJson
 				http://api.jquery.com/jQuery.getJSON/
+
+				G: 2013-08-18 02:07:17
+				jQuery實做AJAX這方面好像用JSON跟XML交換資訊最方便？
+				還是說jQuery有直接讀寫資料庫的辦法？
 				*/
 			});
 

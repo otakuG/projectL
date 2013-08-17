@@ -66,11 +66,6 @@
 		}
 
 		public function push(){
-			/*
-				G:
-				我把push也獨立出一個function。
-				最後註解掉的，是想說把輸出編譯成JSON讓view裡的$.post去讀，不過那整段程式沒辦法RUN。
-			*/
 			$pushList = $this->input->post('pushList');
 
 			if($pushList){
@@ -88,6 +83,9 @@
 					上面是你原本寫的順序嗎？如果是的話問題很明顯
 					redirect之後就換頁了所以後面的東西都跑不到AJAX也就撈佈道東西
 					如果要REDIRECT又要AJAX就用最簡單的方法POST的時候多塞一個變數ajax=true來實作吧
+
+					G: 2013-08-18 01:57:45
+					原本只有AJAX在處理，redirect()是之後加的，不然在你修正前沒辦法正常運作。
 				*/
 
 				if($this->list_model->set_list($pushList)){
