@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>projectL</title>
+		<meta charset="UTF-8" />
 		<link href="<?php echo $customCSS_path; ?>" rel="stylesheet" media="screen" />
 		<link href="<?php echo $bootstrap_path; ?>" rel="stylesheet" media="screen" />
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -47,7 +48,17 @@
 				例如：input-push、button-push
 
 				命名這方面，Tony你有什麼想法嗎？
+				
 
+
+				T: Mon, 19 Aug 2013 19:35:30
+
+				type-name的話就蠻好懂了
+
+				button-push
+				buttonPush
+
+				都OK
 				var push = $('#pushList').val();				
 				$.post(base + 'index.php/mylist/push',{pushList:push},function(data){
 					$('#list').append("<tr>" + "<td>" + data.LID + "</td>" + "<td>" + data.title + "</td>" + "<td>" + data.time + "</td>" + "<tr/>");
@@ -62,15 +73,24 @@
 					$('#list').append("<tr>" + "<td>" + data.LID + "</td>" + "<td>" + data.title + "</td>" + "<td>" + data.time + "</td>" + "<tr/>");
 				},"JSON");
 				/*
-				T: 2013-08-17 21:52:47 
-				似乎要加上type的參數要不然就是PHP的HEADER要改
-				http://api.jquery.com/jQuery.post/
-				再不然就是直接用getJson
-				http://api.jquery.com/jQuery.getJSON/
+					T: 2013-08-17 21:52:47 
+					似乎要加上type的參數要不然就是PHP的HEADER要改
+					http://api.jquery.com/jQuery.post/
+					再不然就是直接用getJson
+					http://api.jquery.com/jQuery.getJSON/
 
-				G: 2013-08-18 02:07:17
-				jQuery實做AJAX這方面好像用JSON跟XML交換資訊最方便？
-				還是說jQuery有直接讀寫資料庫的辦法？
+					G: 2013-08-18 02:07:17
+					jQuery實做AJAX這方面好像用JSON跟XML交換資訊最方便？
+					還是說jQuery有直接讀寫資料庫的辦法？
+				*/
+
+				/*
+					T: Mon, 19 Aug 2013 19:33:59
+					一定要透過PHP之類的SOCKET連上去才能接資料庫
+					JSON跟XML比其實差不多，但是JSON在傳輸效率上會快一點，因為不需要CLODE TAG
+					EX:
+					<root>
+					</root> <------
 				*/
 			});
 

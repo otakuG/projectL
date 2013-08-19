@@ -38,7 +38,12 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+//$route['default_controller'] = "welcome";
+/*
+	T: Mon, 19 Aug 2013 19:46:00
+	修改預設controller
+*/
+$route['default_controller'] = "mylist";
 $route['404_override'] = '';
 
 
