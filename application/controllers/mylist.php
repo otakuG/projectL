@@ -86,17 +86,12 @@
 
 					G: 2013-08-18 01:57:45
 					原本只有AJAX在處理，redirect()是之後加的，不然在你修正前沒辦法正常運作。
-
-					T: Sun, 18 Aug 2013 13:58:48
-					那應該是陣列有點不一樣，你看98行的
-					$new_item = $new_item[0];
-					只有一個資料回傳的時候他還是會有個index
 				*/
 
 				if($this->list_model->set_list($pushList)){
 					if($this->input->post('ajax')=='true'){
 						$new_item = $this->list_model->update_list();
-						$new_item = $new_item[0];
+						$new_item = $new_item[0];						
 						echo json_encode($new_item);
 					}else{
 						redirect('mylist');

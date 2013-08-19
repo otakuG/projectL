@@ -48,13 +48,6 @@
 
 				命名這方面，Tony你有什麼想法嗎？
 
-
-				T: Sun, 18 Aug 2013 13:55:53
-				用camelcasing吧XD
-
-				buttonPush
-				type + name會比較好懂
-
 				var push = $('#pushList').val();				
 				$.post(base + 'index.php/mylist/push',{pushList:push},function(data){
 					$('#list').append("<tr>" + "<td>" + data.LID + "</td>" + "<td>" + data.title + "</td>" + "<td>" + data.time + "</td>" + "<tr/>");
@@ -78,11 +71,6 @@
 				G: 2013-08-18 02:07:17
 				jQuery實做AJAX這方面好像用JSON跟XML交換資訊最方便？
 				還是說jQuery有直接讀寫資料庫的辦法？
-
-				T: Sun, 18 Aug 2013 13:56:50
-				一定要透過PHP之類的SCRIPT才能連資料庫
-
-				要不然就是等WEB SOCKET出來看看能不能直接連3306 PORT...
 				*/
 			});
 
