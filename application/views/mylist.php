@@ -16,11 +16,10 @@
 
 						$username = $this->input->cookie('username');
 						if($username):
+
+						$attributs = array('class' => 'navbar-form pull-right'); 
+						echo form_open('mylist/logout', $attributs); 
 					?>
-					<span>
-						<?php echo 'Hello, ' . $username; ?>
-					</span>
-					<?php $attributs = array('class' => 'navbar-form pull-right'); echo form_open('mylist/logout', $attributs); ?>
 						<button type="submit" class="btn">登出</button>
 					</form>
 					<?php else: $attributs = array('class' => 'navbar-form pull-right'); echo form_open('mylist/login', $attributs); ?>
@@ -34,7 +33,7 @@
 		</div>
 		<div class="container">
 			<div class="hero-unit">
-				<h1>敗家清單</h1>
+				<h1><?php if($username) echo $username . "'s "; ?>pushList</h1>
 				<p>物慾無極限，敗家促經濟！</p>
 			</div>
 			<?php $attributs = array('class' => 'form-inline text-center'); echo form_open('mylist/push', $attributs); ?>
