@@ -11,8 +11,7 @@
 			http://php.net/manual/en/keyword.parent.php
 			*/
 			$this->load->model('list_model');
-			$this->load->helper('url');
-			$this->load->helper('form');
+			$this->load->helper(array('url', 'form', 'cookie'));
 		}
 
 		public function index(){
@@ -100,6 +99,37 @@
 					echo 'error';
 				}
 			}
+		}
+
+		public function login(){
+			/*
+				G: Mon, 19 Aug 2013 06:20:15
+				先寫Cookie的，Session的還沒寫。
+				原本以為set_cookie會return TRUE或FALSE，因為這樣卡了很久……
+			*/
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+
+			$loginData = $this->list_model->login($username);
+
+			if($loginData['password'] == $password){
+
+				$cookie = array(
+					'name' => 'username',
+					'value' => $username,
+					'expire' => '600'
+				);
+
+				$this->input->set_cookie($cookie);
+				redirect('mylist');
+			}else{
+				echo 'error';
+			}
+		}
+
+		public function logout(){
+			delete_cookie('username');
+			redirect('mylist');
 		}
 	}
 ?>
