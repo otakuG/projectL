@@ -42,7 +42,11 @@
 /*
 	T: Mon, 19 Aug 2013 19:46:00
 	修改預設controller
+
+	G: Mon, 20 Aug 2013 00:08:22
+	login的route我不會設 囧
 */
+$route['login'] = "login";
 $route['default_controller'] = "mylist";
 $route['404_override'] = '';
 
