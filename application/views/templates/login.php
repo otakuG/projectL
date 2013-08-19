@@ -41,15 +41,18 @@ COMMENT END-->
 		我把這段獨立出來。
 
 		太習慣有button或input就包一個form了 囧
+
+		G: Tue, 20 Aug 2013 00:55:50
+		之前的問題是在form的指向錯了 orz
 	*/
 
 	$username = $this->input->cookie('username');
 	$login_form_attributs = array('class' => 'navbar-form pull-right'); 
 ?>
 <?php if($username):?>
-	<a class="btn" href="<?php echo site_url("logout");?>">登出</a>
+	<a class="btn" href="<?php echo site_url("user/logout");?>">登出</a>
 <?php else: ?>
-<?php echo form_open('login', $login_form_attributs);?>
+<?php echo form_open('user/login', $login_form_attributs);?>
 	<input name="username" type="text" class="input-medium" placeholder="Username">
 	<input name="password" type="password" class="input-medium" placeholder="Password">
 	<button type="submit" class="btn">登入</button>

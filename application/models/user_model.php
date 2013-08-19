@@ -1,6 +1,14 @@
 <?php
 	class User_model extends CI_Model{
 
+		public function __construct(){
+			/*
+				G: Tue, 20 Aug 2013 00:57:04
+				之前連__construct都忘記加了……
+			*/
+			$this->load->database();
+		}
+
 		public function login($username){
 			/*
 				G: Mon, 19 Aug 2013 18:20:15
