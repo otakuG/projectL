@@ -48,8 +48,6 @@
 				例如：input-push、button-push
 
 				命名這方面，Tony你有什麼想法嗎？
-				
-
 
 				T: Mon, 19 Aug 2013 19:35:30
 
@@ -65,13 +63,17 @@
 				});
 			});
 			*/
-			$('#push_button').click(function(e){
+			$('#submit-push').click(function(e){
 
 				e.preventDefault();
-				var push = $('#input-push').val();
+				var push = $('#text-push').val();
+				
+
 				$.post(base + 'index.php/mylist/push',{pushList:push,ajax:true},function(data){
-					$('#list').append("<tr>" + "<td>" + data.LID + "</td>" + "<td>" + data.title + "</td>" + "<td>" + data.time + "</td>" + "<tr/>");
-				},"JSON");
+					var insert = "<tr>" + "<td>" + data.LID + "</td>" + "<td>" + data.title + "</td>" + "<td>" + data.time + "</td>" + 
+					"<td class='td-button'><form method='post' action='mylist/delete'><button class='btn btn-danger delete_button' type='submit' name='delete' value='" + data.LID + "'><i class='icon-remove-sign'></i>刪除</button></form></td><tr/>";
+					$('#list').prepend(insert).fadeIn('');
+				},"JSON")
 				/*
 					T: 2013-08-17 21:52:47 
 					似乎要加上type的參數要不然就是PHP的HEADER要改
@@ -82,15 +84,19 @@
 					G: 2013-08-18 02:07:17
 					jQuery實做AJAX這方面好像用JSON跟XML交換資訊最方便？
 					還是說jQuery有直接讀寫資料庫的辦法？
-				*/
-
-				/*
+			
 					T: Mon, 19 Aug 2013 19:33:59
 					一定要透過PHP之類的SOCKET連上去才能接資料庫
 					JSON跟XML比其實差不多，但是JSON在傳輸效率上會快一點，因為不需要CLODE TAG
 					EX:
 					<root>
 					</root> <------
+
+					G: Wed, 21 Aug 2013 14:42:22
+					主要遇到三個問題：
+					1. 那個insert變數長得好噁心，有沒有更好的作法？(YAY)
+					2. fadeIn的特效沒有出現。不太熟悉jQuery串接……
+					3. 用AJAX新增的項目，delete_button的AJAX會失效。
 				*/
 			});
 

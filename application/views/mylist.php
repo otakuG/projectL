@@ -18,7 +18,7 @@
 			</div>
 			<?php $attributs = array('class' => 'form-inline text-center'); echo form_open('mylist/push', $attributs); ?>
 				<button type="button" id="button-more" class="btn"><i class="icon-plus-sign"></i></button>
-				<input id="input-push" class="input-xxlarge" name="pushList" type="text" placeholder="PUSH一個清單項目吧！">
+				<input id="text-push" class="input-xxlarge" name="text-push" type="text" placeholder="PUSH一個清單項目吧！">
 				<button id="submit-push" type="submit" class="btn btn-primary">PUSH</button>
 			</form>
 			<table id="list" class="table table-hover table-condensed">
