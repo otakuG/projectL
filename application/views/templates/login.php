@@ -46,8 +46,10 @@ COMMENT END-->
 		之前的問題是在form的指向錯了 orz
 	*/
 
-	$username = $this->input->cookie('username');
+	//$username = $this->input->cookie('username');
 	$login_form_attributs = array('class' => 'navbar-form pull-right'); 
+
+	$username = $this->session->userdata('username');
 ?>
 <?php if($username):?>
 	<a class="btn" href="<?php echo site_url("user/logout");?>">登出</a>

@@ -6,6 +6,7 @@
 
 			$this->load->model('user_model');
 			$this->load->helper(array('cookie', 'url'));
+			$this->load->library('session');
 		}
 
 		public function login(){
@@ -24,7 +25,7 @@
 			$loginData = $this->user_model->login($username);
 
 			if($loginData['password'] == $password){
-
+				/*
 				$cookie = array(
 					'name' => 'username',
 					'value' => $username,
@@ -32,6 +33,10 @@
 				);
 
 				$this->input->set_cookie($cookie);
+				*/
+
+				$this->session->set_userdata('username', $username);
+
 				redirect('mylist');
 			}else{
 				echo 'error';
@@ -39,6 +44,7 @@
 		}
 
 		public function logout(){
+			$this->session->sess_destroy();	
 			delete_cookie('username');
 			redirect('mylist');
 		}

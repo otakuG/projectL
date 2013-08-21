@@ -11,7 +11,6 @@
 			http://php.net/manual/en/keyword.parent.php
 			*/
 			$this->load->model('list_model');
-			$this->load->helper(array('url', 'form'));
 		}
 
 		public function index(){
@@ -34,6 +33,19 @@
 			//讀取list資料
 			$data['list'] = $this->list_model->get_list();
 
+			//讀取session資料（清單的標題）
+			$listTitle = $this->session->userdata('username');
+			if(empty($listTitle)){
+				$data['listTitle'] = "pushList";
+			}else{
+				$data['listTitle'] = $listTitle . "'s pushList";
+			}
+			/*
+				G: Wed, 21 Aug 2013 11:30:10
+				原本是在view（views/mylist.php）裡面讀session資料，
+				但透過controller給view資料會不會比較好？
+			*/
+			
 			//var_dump($data['list']);
 
 			//載入CSS
