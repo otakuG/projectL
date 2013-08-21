@@ -70,9 +70,17 @@
 				
 
 				$.post(base + 'index.php/mylist/push',{pushList:push,ajax:true},function(data){
-					var insert = "<tr>" + "<td>" + data.LID + "</td>" + "<td>" + data.title + "</td>" + "<td>" + data.time + "</td>" + 
+					var insert = "<tr id=\"tr_" + data.LID +"\"" +  "style=\"display:none\">" + "<td>" + data.LID + "</td>" + "<td>" + data.title + "</td>" + "<td>" + data.time + "</td>" + 
 					"<td class='td-button'><form method='post' action='mylist/delete'><button class='btn btn-danger delete_button' type='submit' name='delete' value='" + data.LID + "'><i class='icon-remove-sign'></i>刪除</button></form></td><tr/>";
-					$('#list').prepend(insert).fadeIn('');
+					/*
+						$('#list').prepend(insert).hide().fadeIn('slow');
+						T: Wed, 21 Aug 2013 21:39:04
+
+						應該要針對你新加入的那段做fadein
+					 */
+					
+					$('#list').prepend(insert);
+					$("#tr_" + data.LID).show('slow');
 				},"JSON")
 				/*
 					T: 2013-08-17 21:52:47 
@@ -97,6 +105,11 @@
 					1. 那個insert變數長得好噁心，有沒有更好的作法？(YAY)
 					2. fadeIn的特效沒有出現。不太熟悉jQuery串接……
 					3. 用AJAX新增的項目，delete_button的AJAX會失效。
+
+					T: Wed, 21 Aug 2013 21:36:43
+					1.https://github.com/trix/nano
+					2.
+					3.http://api.jquery.com/on/ 而且上面新增的TR沒有給ID，所以刪除的時候事件抓不到ID
 				*/
 			});
 
