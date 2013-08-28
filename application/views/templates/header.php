@@ -12,6 +12,11 @@
 
 			var base = "<?php echo base_url();?>";
 
+			$('#button-more').click(
+				function(){
+					$('#pushInfo').toggle('fast');
+			});
+
 			$('.delete_button').click(function(e){
 
 				//防止點下去的預設事件（換頁）

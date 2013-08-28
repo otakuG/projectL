@@ -1,3 +1,38 @@
 .table td.td-button{
 	text-align: right;
 }
+
+#form-push{
+	width: 655px;
+
+	margin: 0px auto 30px;
+	/*margin-bottom: 30px;*/
+
+	text-align: center;
+}
+
+#form-push input{
+	margin-bottom: 0px;
+}
+
+#pushInfo{
+	display: none;
+
+	margin-top: 10px;
+	padding: 5px 10px;
+
+	border-radius: 6px;
+
+	clear: both;
+
+	text-align: center;
+
+	background-color: rgb(238, 238, 238)
+}
+
+#pushInfo .pushInfo-row{
+	margin: 10px;
+
+	clear: both;
+}
+
