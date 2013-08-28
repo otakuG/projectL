@@ -27,7 +27,7 @@
 
 				//AJAX的POST查詢帶delete=lid的變數，當完成時hide該欄位
 				$.post(base + 'index.php/mylist/delete',{delete:lid},function(){
-					$("#tr_" + lid).hide('slow');
+					$("#tr_" + lid).hide('fast');
 				});
 			});
 
@@ -71,11 +71,12 @@
 			$('#submit-push').click(function(e){
 
 				e.preventDefault();
-				var push = $('#text-push').val();
+				var pT = $('#text-push').val();
+				var pD = $('#pushDescription').val();
+				var pU = $('#pushUrl').val();
 				
-
-				$.post(base + 'index.php/mylist/push',{pushList:push,ajax:true},function(data){
-					var insert = "<tr id=\"tr_" + data.LID +"\"" +  "style=\"display:none\">" + "<td>" + data.LID + "</td>" + "<td>" + data.title + "</td>" + "<td>" + data.time + "</td>" + 
+				$.post(base + 'index.php/mylist/push',{pushTitel:pT,pushDescription:pD,pushUrl:pU,ajax:true},function(data){
+					var insert = "<tr id=\"tr_" + data.LID +"\"" +  "style=\"display:none\">" + "<td>" + data.LID + "</td>" + "<td>" + data.title + "</td>" + "<td>" + data.description  + "</td>" + "<td>" + data.time + "</td>" + 
 					"<td class='td-button'><form method='post' action='mylist/delete'><button class='btn btn-danger delete_button' type='submit' name='delete' value='" + data.LID + "'><i class='icon-remove-sign'></i>刪除</button></form></td><tr/>";
 					/*
 						$('#list').prepend(insert).hide().fadeIn('slow');
@@ -85,7 +86,7 @@
 					 */
 					
 					$('#list').prepend(insert);
-					$("#tr_" + data.LID).show('slow');
+					$("#tr_" + data.LID).show('fast');
 				},"JSON")
 				/*
 					T: 2013-08-17 21:52:47 

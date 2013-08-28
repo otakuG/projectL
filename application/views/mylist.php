@@ -18,7 +18,7 @@
 			</div>
 			<form id="form-push" action="<?php echo site_url('myslist/push'); ?>" method="post">
 				<button type="button" id="button-more" class="btn"><i class="icon-plus-sign"></i></button>
-				<input id="text-push" class="input-xxlarge" name="text-push" type="text" placeholder="PUSH一個清單項目吧！" />
+				<input id="text-push" class="input-xxlarge" name="text-push" type="text" placeholder="PUSH一個清單項目！" />
 				<button id="submit-push" type="submit" class="btn btn-primary">PUSH</button>
 				<div id="pushInfo">
 					<div class="pushInfo-row">
@@ -26,7 +26,7 @@
 						<span>敘述</span>
 					</div>
 					<div class="pushInfo-row">
-						<input type="text" id="puchUrl" class="input-xxlarge" placeholder="它是一個連結嗎？" />
+						<input type="text" id="pushUrl" class="input-xxlarge" placeholder="它是一個連結嗎？" />
 						<span>URL</span>
 					</div>
 				</div>
@@ -55,6 +55,7 @@
 				<tr id="tr_<?php echo $list_item['LID']; ?>">
 					<td><?php echo $list_item['LID']; ?></td>
 					<td><?php echo $list_item['title']; ?></td>
+					<td><?php echo $list_item['description']; ?></td>
 					<td><?php echo $list_item['time']; ?></td>
 					<td class="td-button">
 						<?php echo form_open('mylist/delete');?>

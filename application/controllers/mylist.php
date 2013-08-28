@@ -77,9 +77,11 @@
 		}
 
 		public function push(){
-			$pushList = $this->input->post('pushList');
+			$pushTitel = $this->input->post('pushTitel');
+			$pushDescription = $this->input->post('pushDescription');
+			$pushUrl = $this->input->post('pushUrl');
 
-			if($pushList){
+			if($pushTitel){
 				/* T: 2013-08-17 21:28:50 
 				$this->list_model->set_list($pushList);
 				redirect('mylist');
@@ -99,7 +101,7 @@
 					原本只有AJAX在處理，redirect()是之後加的，不然在你修正前沒辦法正常運作。
 				*/
 
-				if($this->list_model->set_list($pushList)){
+				if($this->list_model->set_list($pushTitel, $pushDescription ,$pushUrl)){
 					if($this->input->post('ajax')=='true'){
 						$new_item = $this->list_model->update_list();
 						$new_item = $new_item[0];						

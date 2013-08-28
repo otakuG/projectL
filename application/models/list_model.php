@@ -19,12 +19,14 @@
 			return $query->result_array();
 		}
 
-		public function set_list($pushList){
+		public function set_list($pushList, $pushDescription, $pushUrl){
 			$this->load->helper('date');
 			$dateFormat = "%Y-%m-%d %h:%i:%s";
 
 			$data = array(
 				'title' => $pushList,
+				'description' => $pushDescription,
+				'url' => $pushUrl,
 				'time' => mdate($dateFormat, time())
 			);
 
